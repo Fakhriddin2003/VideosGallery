@@ -7,21 +7,26 @@ const testElement = document.createElement("div")
 
 videosBox.innerHTML = ""
 
+
 const addVideo = () => {
     const video = url.value;
     if (video == "") return;
     youtube_base_url = 'https://www.youtube.com/embed/'
     video_link = url.value.replace('https://www.youtube.com/watch?v=', '')
     videosBox.src = youtube_base_url + video_link
+    
+    if (videosBox.innerHTML.includes(videosBox.src)) return;
+
     index1 = index++
     videosBox.innerHTML += `
- <div class="col-sm-6 col-md-4 col-lg-3 mb-3" id = '${index1}'>
-             <div class="rounded shadow video-box">
-                       <iframe width="100%" height="100%" src="${videosBox.src}" frameborder="0" id="youtube-player"></iframe>
-                       <button class="btn btn-dark" onclick="deleteVideo('${index1}')"><i class="fas fa-trash" ></i></button>
-                       </div>
-         </div>
-         `
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-3" id = '${index1}'>
+    <div class="rounded shadow video-box">
+    <iframe width="100%" height="100%" src="${videosBox.src}" frameborder="0" id="youtube-player"></iframe>
+    <button class="btn btn-dark" onclick="deleteVideo('${index1}')"><i class="fas fa-trash" ></i></button>
+    </div>
+    </div>
+    `
+    
 }
 
 // const checkVideo = (video) => {
