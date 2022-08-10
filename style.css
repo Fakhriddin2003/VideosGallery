@@ -1,14 +1,4 @@
-input {
-    max-width: 300px;
-}
 
-.color-box {
-    height: 200px;
-    background-color: gainsboro;
-    display: flex;
-    justify-content: end;
-    align-items: flex-end;
-    background-size: cover !important;
-    background-position: center !important;
-
+.title{
+    text-align: center;
 }

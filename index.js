@@ -1,73 +1,45 @@
-const videoBox = document.getElementById("videoBox")
-const videoLink = document.getElementById("videoLink")
-let index = 2;
-videoBox.innerHTML = "";
-let lastVideo = "";
-//const testElement = document.createElement("div")
-// const checkColor = (color) => {
-//     const colors = document.getElementsByClassName("color-box")
-//     // Background berish jarayoni    
-//      if (color.includes(".")) testElement.style.background = `url(${color})`;
-//      else testElement.style.background = color;
+let url = document.getElementById("video-text")
+let youtube_player = document.getElementById("youtube-player")
+let videoBox = document.getElementsByClassName('video-box')
+let videosBox = document.getElementById("videosBox")
+let index = 0
+const testElement = document.createElement("div")
 
-//     for (const element of colors) {
-//         if (element.style.background == testElement.style.background) return true;
-//     }
-//     return false;
-// }
+videosBox.innerHTML = ""
 
 const addVideo = () => {
-    const link = videoLink.value;
-    if (link == "") return;
-    //  lastColors = colorsBox.innerHTML;
-    const video = document.createElement("video")
-    video.width = "100%"
-    video.height = "100%"
-    video.className = "col-sm-6 col-md-4 col-lg-3 mb-3"
-    video.src = videoLink.value
-    video.autoplay = true
-const videoDiv = document.createElement("div")
-videoDiv.className = "rounded shadow color-box"
-videoDiv.appendChild(video)
-
+    const video = url.value;
+    if (video == "") return;
+    youtube_base_url = 'https://www.youtube.com/embed/'
+    video_link = url.value.replace('https://www.youtube.com/watch?v=', '')
+    videosBox.src = youtube_base_url + video_link
+    index1 = index++
+    videosBox.innerHTML += `
+ <div class="col-sm-6 col-md-4 col-lg-3 mb-3" id = '${index1}'>
+             <div class="rounded shadow video-box">
+                       <iframe width="100%" height="100%" src="${videosBox.src}" frameborder="0" id="youtube-player"></iframe>
+                       <button class="btn btn-dark" onclick="deleteVideo('${index1}')"><i class="fas fa-trash" ></i></button>
+                       </div>
+         </div>
+         `
 }
 
-    //const col = document.createElement("div")
-    //col.className = "col-sm-6 col-md-4 col-lg-3 mb-3"
-    //col.id = index
-    //const colorBox = document.createElement("div")
-    //colorBox.className = "rounded shadow color-box"
-    // Background berish jarayoni
-    // if (color.includes(".")) colorBox.style.background = `url(${color})`;
-    // else colorBox.style.background = color;
-
-//     colorBox.style.background = color;
-//     colorBox.innerHTML = `
-//     <button class="btn btn-danger" onclick="deleteColor('${index++}')"><i class="fas fa-trash"></i></button>
-//     `
-//     col.appendChild(colorBox);
-//     colorsBox.appendChild(col)
+// const checkVideo = (video) => {
+//     let videoTag = document.getElementsByClassName("video-box")
+//     let avatar = videoTag[0].getAttribute("avatar")
+//     if(avatar !== undefined)
+    
+    // videos = document.getElementById('videosBox').children
+    // for (const element of videos) {
+    //     if (video == element.src) {
+    //         return true
+    //     }
+    // }
 // }
 
-const deleteColor = (id) => {
-    const element = document.getElementById(id)
-    console.log(element);
-    element.remove()
+const deleteVideo = (id) => {
+    document.getElementById(id).remove()
 }
-const removeAllColors = () => {
-    lastColors = colorsBox.innerHTML;
-    colorsBox.innerHTML = ""
+const removeAllVideos = () => {
+    videosBox.innerHTML = "";
 }
-const back = () => {
-    colorsBox.innerHTML = lastColors
-}
-
-// const iframeTag = document.createElement("iframe")
-// iframeTag.style.margin = "0"
-// iframeTag.style.padding = "0"
-// iframeTag.style.width = "100%"
-// iframeTag.src = inputValues
-// iframeTag.className = "video"
-
-// colorsBox.appendChild(iframeTag)
-// bigContainer.appendChild(colorsBox)
